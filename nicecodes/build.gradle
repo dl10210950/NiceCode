@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+android {
+    lintOptions {
+        abortOnError false
+    }
+}
+allprojects {
+    repositories {
+        jcenter()
+    }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
+}
+publish {
+    //www.https://bintray.com
+    //account:duanlian
+    //com.duanlian:nicecodes:0.01
+    //gradlew clean build bintrayUpload -PbintrayUser=duanlian -PbintrayKey=3fe200da46328e53a9c8742e817975875ad00138 -PdryRun=false
+    userOrg = 'duanlian'//bintray.com用户名
+    groupId = 'com.duanlian'//jcenter上的路径
+    artifactId = 'nicecodes'//项目名称
+    publishVersion = '0.01'//版本号
+    desc = 'Some nice codes for Android developer'
+    website = 'https://github.com/duanlian/NiceCode'
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
