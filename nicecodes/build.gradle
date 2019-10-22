@@ -5,6 +5,7 @@ android {
     buildToolsVersion "29.0.1"
 
 
+
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 29
@@ -41,13 +42,14 @@ publish {
     //www.https://bintray.com
     //account:duanlian
     //com.duanlian:nicecodes:0.01
+    //https://github.com/dl10210950/NiceCode.git
     //gradlew clean build bintrayUpload -PbintrayUser=duanlian -PbintrayKey=3fe200da46328e53a9c8742e817975875ad00138 -PdryRun=false
     userOrg = 'duanlian'//bintray.com用户名
     groupId = 'com.duanlian'//jcenter上的路径
     artifactId = 'nicecodes'//项目名称
-    publishVersion = '0.01'//版本号
+    publishVersion = '0.02'//版本号
     desc = 'Some nice codes for Android developer'
-    website = 'https://github.com/duanlian/NiceCode'
+    website = 'https://github.com/dl10210950/NiceCode'
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -56,4 +58,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.android.support:recyclerview-v7:27.0.2'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.gyf.barlibrary:barlibrary:2.2.9'//沉浸状态栏
+    implementation 'com.android.support:design:27.0.2'
 }
